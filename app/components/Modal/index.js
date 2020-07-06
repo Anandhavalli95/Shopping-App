@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 
@@ -13,7 +14,7 @@ function getModalStyle() {
   };
 }
 
-const useStyles = makeStyles((theme) => ({
+const useStyles = makeStyles(theme => ({
   paper: {
     position: 'absolute',
     width: 400,
@@ -23,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function SimpleModal({children, ...props}) {
+export default function SimpleModal({ children, ...props }) {
   const classes = useStyles();
   const [modalStyle] = React.useState(getModalStyle);
 
@@ -33,13 +34,24 @@ export default function SimpleModal({children, ...props}) {
     </div>
   );
   return (
-      <Modal
-        open={props.open || false}
-        onClose={props.closeModal}
-        aria-labelledby="simple-edit-form"
-        aria-describedby="simple-edit-description"
-      >
-        {body}
-      </Modal>
+    <Modal
+      className="Modal"
+      open={props.open || false}
+      onClose={props.closeModal}
+      aria-labelledby="simple-edit-form"
+      aria-describedby="simple-edit-description"
+    >
+      {body}
+    </Modal>
   );
 }
+
+SimpleModal.propTypes = {
+  open: PropTypes.bool,
+  children: PropTypes.oneOfType([
+    PropTypes.arrayOf(PropTypes.node),
+    PropTypes.node,
+  ]),
+
+  closeModal: PropTypes.func,
+};

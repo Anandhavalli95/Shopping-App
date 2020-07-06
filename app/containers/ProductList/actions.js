@@ -1,4 +1,9 @@
-import { GET_PRODUCTS_LIST, GET_PRODUCTS_LIST_FAILURE, GET_PRODUCTS_LIST_SUCCESS } from './constants';
+import {
+  GET_PRODUCTS_LIST,
+  GET_PRODUCTS_LIST_FAILURE,
+  GET_PRODUCTS_LIST_SUCCESS,
+  SET_PAGE_NUMBER,
+} from './constants';
 
 export function getProductList(pageNumber, query) {
   return {
@@ -11,12 +16,19 @@ export function getProductList(pageNumber, query) {
 export function getProductListSuccess(products) {
   return {
     type: GET_PRODUCTS_LIST_SUCCESS,
-    products
+    products,
   };
 }
 export function getProductListFailure(error) {
   return {
     type: GET_PRODUCTS_LIST_FAILURE,
-    error
+    error,
+  };
+}
+
+export function setPageNumber(pageNumber) {
+  return {
+    type: SET_PAGE_NUMBER,
+    pageNumber,
   };
 }

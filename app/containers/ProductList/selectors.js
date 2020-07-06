@@ -20,4 +20,16 @@ const makeSelectError = () =>
     selectProductList,
     productListState => productListState.error,
   );
-export { selectProductList, makeSelectProducts, makeSelectError, makeSelectIsLoading };
+
+const makeSelectPageNumber = () =>
+  createSelector(
+    selectProductList,
+    productListState => productListState.page,
+  );
+export {
+  selectProductList,
+  makeSelectProducts,
+  makeSelectError,
+  makeSelectIsLoading,
+  makeSelectPageNumber,
+};

@@ -1,7 +1,7 @@
 import React from 'react';
 import loadable from 'utils/loadable';
-import LoadingIndicator from 'components/LoadingIndicator';
+import Skeleton from '@material-ui/lab/Skeleton';
 
 export default loadable(() => import('./index'), {
-  fallback: <LoadingIndicator />,
+  fallback: <Skeleton />,
 });
